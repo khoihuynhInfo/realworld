@@ -1,0 +1,23 @@
+<ActionBar class="action-bar" title="Create Artile" class="action-bar">
+    <ActionItem>
+        <ActivityIndicator busy="true" width="40" height="40" class="activity-indicator"></ActivityIndicator>
+    </ActionItem>
+</ActionBar>
+
+
+<StackLayout class="form">
+    <StackLayout class="m-t-15">
+        <TextField class="input input-border" hint="title Article" keyboardType="email" autocorrect="false" autocapitalizationType="none"
+            class="input input-border"></TextField>
+    </StackLayout>
+    <StackLayout class="m-t-15">
+        <TextField class="input input-border" hint="description Article" class="input input-border" secure="true"></TextField>
+    </StackLayout>
+    <StackLayout class="m-t-15">
+        <TextField class="input input-border" hint="content Article" class="input input-border" secure="true"></TextField>
+    </StackLayout>
+
+    <StackLayout class="m-t-15">
+        <Button text="Create Article" (tap)="showAlert(secondTx.text)" class="btn btn-primary btn-active"></Button>
+    </StackLayout>
+</StackLayout>

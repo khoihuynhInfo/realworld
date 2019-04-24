@@ -1,0 +1,30 @@
+<FlexboxLayout flexDirection="column" justifyContent="space-between" height="100%">
+
+	<GridLayout class="form" orientation="horizontal">
+
+		<ListView class="list-group" [items]="comments" separatorColor="rgba(0, 0, 0, 0)">
+			<ng-template let-item="item" let-index="index">
+				<ListView.itemTemplate>
+					<GridLayout class="list-group-item" rows="auto, *" columns="auto, *">
+						<Image class="face" row="0" col="0" [src]="item?.author?.image" class="thumb img-circle" rowSpan="1"></Image>
+
+						<WrapLayout row="0" col="1" class="cnt-comment">
+							<GridLayout rows="auto, auto, *">
+								<Label class="name list-group-item-heading" row="0" [text]="item?.author?.username" textwrap="true"></Label>
+								<Label class="comment list-group-item-heading" row="1" [text]="item?.updatedAt" textwrap="true"></Label>
+								<Label class="cnt-body" row="2" [text]="item?.body" textwrap="true"></Label>
+							</GridLayout>
+						</WrapLayout>
+					</GridLayout>
+				</ListView.itemTemplate>
+			</ng-template>
+		</ListView>
+
+	</GridLayout>
+
+	<StackLayout class="form comment-control" visibility="visible" orientation="horizontal" width="100%">
+		<TextField  autocorrect="false" (textChange)="onTextChange($event)" (returnPress)="onReturn($event)" class="input input-rounded txtcomment" width="70%" height="120"></TextField>
+		<button class="btn-outline btn-commnet" text="Comment" width="30%" height="90" (tap)="addComment()"></button>
+	</StackLayout>
+
+</FlexboxLayout>

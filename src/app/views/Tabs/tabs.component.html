@@ -1,0 +1,13 @@
+    
+<TabView androidTabsPosition="top" selectedIndex="0" 
+(selectedIndexChanged)="onSelectedIndexChanged($event)"
+>
+    <page-router-outlet *tabItem="{title: 'YourFeed'}" name="yourfeed" >
+    </page-router-outlet>
+
+    <page-router-outlet *tabItem="{title: 'GlobalFeed'}" name="globalfeed">
+    </page-router-outlet>
+
+    <page-router-outlet *tabItem="{title: 'FeatureMore'}" name="featuremore">
+    </page-router-outlet> 
+</TabView>

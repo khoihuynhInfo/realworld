@@ -1,0 +1,8 @@
+<ScrollView class="page">
+    <StackLayout class="home-panel">
+        <Button class="btn btn-primary" text="Setting"></Button>
+        <Button [nsRouterLink]="['../newarticle']" class="btn btn-outline" text="Create Article"></Button>
+        <Button class="btn btn-primary" text="Your Article"></Button>
+        <Button class="btn btn-outline" text="Logout" (tap)="onLogout()"></Button>
+    </StackLayout>
+</ScrollView>

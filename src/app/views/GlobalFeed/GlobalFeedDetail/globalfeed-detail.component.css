@@ -1,0 +1,76 @@
+.action-bar {
+    background: white; 
+    color: #2c3e50;
+}
+.board-detail { 
+    background: #f4f4f4;
+    color: #2c3e50;
+}
+
+.img-circle {
+    border: 1px solid orange;
+}
+
+.name {
+    font-weight: 400;
+
+}
+
+.day-article {
+    color: white;
+}
+
+
+.cnt-article {
+    background: #f4f4f4;
+    padding: 10;
+    padding-top: 20;
+    padding-left: 20;
+}
+
+.title-article{
+    /* margin-top:5; */
+    font-weight: 500;
+    color: #2c3e50;
+    padding-bottom: 5;
+    font-size: 18;
+    text-transform: capitalize;
+    
+}
+
+.des-article {
+    color: black;
+    font-size: 18;
+    font-weight: 200;
+}
+
+.favorite {
+    color: #e74c3c;
+}
+
+.count-favorite {
+    color: #e74c3c;
+    font-weight: 500;
+    font-size: 12;
+    margin-left: 20;
+}
+
+.commnet {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.btn-favorite {
+    background: #34495e;
+    color: white;
+    border-color:#34495e;
+}
+
+.btn-commnet {
+    background: #34495e;
+    color: white;
+
+    border-color:#34495e;
+
+}

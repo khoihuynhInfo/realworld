@@ -1,0 +1,50 @@
+<ActionBar class="action-bar" title="Detail Artile" class="action-bar">
+	<ActionItem>
+		<ActivityIndicator busy='{{isBusy$ | async}}' width="40" height="40" class="activity-indicator"></ActivityIndicator>
+	</ActionItem>
+	<ActionItem class="action-follow" text="Follow" ios.position="left"></ActionItem>
+</ActionBar>
+
+
+<FlexboxLayout flexDirection="column" justifyContent="space-between" height="100%">
+
+	<GridLayout rows="auto, *" orientation="horizontal">
+		<GridLayout row="0" columns="*, 80" class="list-group">
+			<GridLayout col="0" class="list-group-item board-detail" rows="auto, *" columns="auto, *">
+				<Image row="0" col="0" [src]="article?.author?.image" class="thumb img-circle" rowSpan="2"></Image>
+				<Label row="0" col="1" [text]="article?.author?.username" class="list-group-item-heading name"></Label>
+				<Label row="1" col="1" [text]="article?.updatedAt" class="list-group-item-text day-article"></Label>
+			</GridLayout>
+			<GridLayout col="1" rows="auto, *" class="list-group-item board-detail">
+				<Label row="0" class="fas favorite" text="&#xf185;"></Label>
+				<Label row="0" class="count-favorite" [text]="article?.favoritesCount"></Label>
+			</GridLayout>
+		</GridLayout>
+
+		<GridLayout class="cnt-article" row="1">
+			<ScrollView>
+				<StackLayout>
+
+					<StackLayout>
+						<Label [text]="article?.title" textWrap="true" class="title-article"></Label>
+					</StackLayout>
+					<StackLayout>
+						<Label textWrap="true" class="des-article">
+							<FormattedString>
+								<Span [text]="article?.body"></Span>
+							</FormattedString>
+						</Label>
+					</StackLayout>
+
+				</StackLayout>
+			</ScrollView>
+		</GridLayout>
+
+	</GridLayout>
+
+	<StackLayout visibility="visible" orientation="horizontal" width="100%">
+		<button class="btn-outline btn-favorite" text="Favorite(20)" width="50%" height="80"></button>
+		<button class="btn-outline btn-commnet" text="Commnet" width="50%" height="80" (tap)="openModelCommnet()"></button>
+	</StackLayout>
+
+</FlexboxLayout>
