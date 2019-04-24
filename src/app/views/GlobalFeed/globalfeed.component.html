@@ -31,6 +31,6 @@
       </ListView.itemTemplate>
     </ng-template>
   </ListView>
-  <ActivityIndicator [busy]="isBusy" width="50" height="50" class="activity-indicator"></ActivityIndicator>
+  <ActivityIndicator busy='{{isBusy$ | async }}' width="50" height="50" class="activity-indicator"></ActivityIndicator>
 
 </GridLayout>

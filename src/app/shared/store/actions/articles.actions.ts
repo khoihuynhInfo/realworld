@@ -12,12 +12,16 @@ export enum ActionTypes {
     GetComments = '[Article Comments Component] Get Comments Article Request',
     GetCommentsSuccess = '[Article Comments Component] Get Comments Article Success',
     GetCommentsFaild = '[Article Comments Component] Get Comments Article Faild',
+    // GetYourFeedArticles = '[Article Your Feed Component] Get Your Feed Article Request',
+    // GetYourFeedArticlesSuccess = '[Article Your Feed Component] Get Your Feed Article Success',
+    // GetYourFeedArticlesFaild = '[Article Your Feed Component] Get Your Feed Article Faild'
 }
+
 
 // LIST ARTICLES
 export class GetArticles implements Action {
     readonly type = ActionTypes.GetArticles;
-    constructor(public offset) { }
+    constructor(public offset, public kindArticle?) { }
 }
 
 export class GetArticlesSuccess implements Action {
@@ -29,6 +33,22 @@ export class GetArticlesFaild implements Action {
     readonly type = ActionTypes.GetArticlesFaild;
     constructor(public payload) { }
 }
+
+// // LIST YOUR FEED
+// export class GetYourFeedArticles implements Action {
+//     readonly type = ActionTypes.GetYourFeedArticles;
+//     constructor(public offset) { }
+// }
+// export class GetYourFeedArticlesSuccess implements Action {
+//     readonly type = ActionTypes.GetYourFeedArticlesSuccess;
+//     constructor(public payload) { }
+// }
+// export class GetYourFeedArticlesFaild implements Action {
+//     readonly type = ActionTypes.GetYourFeedArticlesFaild;
+//     constructor(public payload) { }
+// }
+
+
 // DETAIL ARTICLE
 export class GetDetailArticle implements Action {
     readonly type = ActionTypes.GetDetailArticle;
@@ -46,17 +66,17 @@ export class GetDetailArticleFaild implements Action {
 // DETAIL COMMENTS
 export class GetComments implements Action {
     readonly type = ActionTypes.GetComments;
-    constructor(public slug) {}
+    constructor(public slug) { }
 }
 
 export class GetCommentsSuccess implements Action {
     readonly type = ActionTypes.GetCommentsSuccess;
-    constructor(public payload) {}
+    constructor(public payload) { }
 }
 
 export class GetCommentsFaild implements Action {
     readonly type = ActionTypes.GetCommentsFaild;
-    constructor(public payload) {}
+    constructor(public payload) { }
 }
 
 export type ArticlesAction = GetArticles
@@ -68,3 +88,6 @@ export type ArticlesAction = GetArticles
     | GetComments
     | GetCommentsSuccess
     | GetCommentsFaild
+    // | GetYourFeedArticles
+    // | GetYourFeedArticlesSuccess
+    // | GetYourFeedArticlesFaild

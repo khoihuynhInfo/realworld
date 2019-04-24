@@ -6,6 +6,9 @@ import { IAppState } from '~/app/shared/store/state/app.state';
 import { isIOS, device, } from "tns-core-modules/platform/platform";
 import { GetArticles } from '~/app/shared/store/actions/articles.actions';
 import { Article } from '~/app/shared/articles/article.model';
+import { BehaviorSubject } from "rxjs";
+import { ArticlesService } from '~/app/shared/articles/articles.service';
+
 
 declare const UIApplication: any;
 
@@ -18,16 +21,15 @@ declare const UIApplication: any;
 
 export class GlobalFeedComp implements OnInit {
     lengthList: number = 0;
-    isBusy: boolean = true;
     articles: Array<Article> = [];
     paddingBottom = 0;
+    isBusy$: BehaviorSubject<Boolean>;
 
     constructor(
         private page: Page,
         private store: Store<IAppState>,
-    ) {
-
-    }
+        private articlesService: ArticlesService,
+    ) { }
 
     ngOnInit() {
         const osVersion: number = +device.osVersion.replace(/^(\d+(?:\.\d+)).*$/, '$1');
@@ -39,14 +41,14 @@ export class GlobalFeedComp implements OnInit {
                 (res: any) => {
                     this.articles = res.articles;
                     if (res && res.articles && res.articles.length) {
-
-                        console.log('res', res);
                         this.lengthList = this.articles.length;
-                        this.isBusy = false;
                     }
                 }
             );
 
+        
+        this.isBusy$ = this.articlesService.getIsBusy();
+        
         if (isIOS && osVersion >= 11.0) {
             const window = UIApplication.sharedApplication.keyWindow;
             this.paddingBottom = window.safeAreaInsets.bottom;
@@ -54,11 +56,11 @@ export class GlobalFeedComp implements OnInit {
 
     }
 
+
     loadMoreItems(): void {
         console.log('load more');
         this.store.dispatch(new GetArticles(1));
     }
-
 
 
 }

@@ -3,8 +3,12 @@ import { Page } from "tns-core-modules/ui/page/page";
 import { Increment, Decrement, Reset } from '~/app/shared/store/actions/counter.actions';
 
 import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { ArticlesService } from '../../shared/articles/articles.service';
+
+import { selectArticleList } from '~/app/shared/store/selectors/articles.selectors';
+import { IAppState } from '~/app/shared/store/state/app.state';
+import { Article } from '~/app/shared/articles/article.model';
+import { BehaviorSubject } from "rxjs";
+import { ArticlesService } from '~/app/shared/articles/articles.service';
 
 @Component({
     selector: "yourfeed-comp",
@@ -14,45 +18,21 @@ import { ArticlesService } from '../../shared/articles/articles.service';
 })
 
 export class YourFeedComp implements OnInit {
-    count$: Observable<number>;
 
-    groceryList: Array<Object> = [];
-
-
+    lengthList: number = 0;
+    articles: Array<Article> = [];
+    isBusy$: BehaviorSubject<Boolean>;
     constructor(
         private page: Page,
-        private store: Store<{ count: number }>,
-        private articlesService: ArticlesService
-    ) {
-        this.count$ = store.pipe(select('count'));
-    }
+        private articlesService: ArticlesService,
+        private store: Store<IAppState>,
+    ) { }
 
     ngOnInit(): void {
         this.page.actionBarHidden = true;
-        this.groceryList.push({ name: "Apples" });
-        this.groceryList.push({ name: "Bananas" });
-        this.groceryList.push({ name: "Oranges" });
-        this.groceryList.push({ name: "Oranges" });
-        this.groceryList.push({ name: "Oranges" });
-        this.groceryList.push({ name: "Oranges" });
-        this.groceryList.push({ name: "Oranges" });
-
-        this.articlesService.fetchArticles(0, true).subscribe(res => {
-            console.log("YOUR FEED", res);
-        });
-    }
-    
-
-    increment() {
-        this.store.dispatch(new Increment());
-    }
-
-    decrement() {
-        this.store.dispatch(new Decrement());
-    }
-
-    reset() {
-        this.store.dispatch(new Reset());
+        this.store.pipe(select(selectArticleList))
+            .subscribe((res: any) => this.articles = res.articles);
+        this.isBusy$ = this.articlesService.getIsBusy();
     }
 
 

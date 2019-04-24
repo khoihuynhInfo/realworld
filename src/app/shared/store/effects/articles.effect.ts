@@ -12,12 +12,16 @@ export class ArticlesEffect {
     loadArticles$ = this.action$
         .pipe(
             ofType(ActionTypes.GetArticles),
-            mergeMap(() => this.articlesService.fetchArticles().pipe(
-                map((articles) => {
-                    return ({ type: ActionTypes.GetArticlesSuccess, payload: articles })
-                }),
-                catchError(() => of({ type: ActionTypes.GetArticlesFaild }))
-            ))
+            mergeMap( (res ) => {
+                const kindArticle = res["kindArticle"] || false;
+                return this.articlesService.fetchArticles(res["offset"], kindArticle).pipe(
+                    map((articles) => {
+                        return ({ type: ActionTypes.GetArticlesSuccess, payload: articles })
+                    }),
+                    catchError(() => of({ type: ActionTypes.GetArticlesFaild }))
+                )
+            })
+
         )
 
 
@@ -48,7 +52,8 @@ export class ArticlesEffect {
                     }),
                     catchError(() => of({ type: ActionTypes.GetCommentsFaild }))
                 )
-            })
+            }
+            )
         )
 
 

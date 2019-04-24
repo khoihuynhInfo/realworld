@@ -1,41 +1,28 @@
-/* .list-item{
-    height: 100;
-    margin: 10 0;
-    background-color: bisque;
-}
 
-.list-header{
-    height: 160;
-    background-color: #eaeaea;
-} */
-
-/* .list-group-item{
-    height: 100;
-} */
-
-/* .template{
-    margin: 10px;
-} */
 .face{
     max-width: 60;
     max-height: 60;
 }
 .list-group{
-    background: #7f8c8d;
+    background: #ecf0f1;
+    
 }
 .list-group-item{
-    background: #ecf0f1;
-   margin: 10px;
+    background: #f7f7f7;
+    margin: 10;
+    
 }
-
 
 
 .date-show{
-    margin-left: 100;
-    color: #f4f4f4;
-    font-size: 10; 
+   color: #bdc3c7;
+   font-size: 10; 
+   margin-top: 5;
 }
-
+.favoritescount{
+    font-size: 9;
+    color: #d35400;
+}
 .cnt-articles{
     margin-top: 20;
     color: #7f8c8d;
@@ -48,7 +35,8 @@
  
 
 .title-articles{
-    margin-top:5;
-    color:#2c3e50;
-    text-transform: uppercase;
+    /* margin-top:5; */
+    font-weight: 500;
+    color: #2980b9;
+    text-transform: lowercase;
 }

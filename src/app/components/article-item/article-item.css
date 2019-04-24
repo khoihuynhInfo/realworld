@@ -1,0 +1,42 @@
+
+.face{
+    max-width: 60;
+    max-height: 60;
+}
+.list-group{
+    background: #ecf0f1;
+    
+}
+.list-group-item{
+    background: #f7f7f7;
+    margin: 10;
+    
+}
+
+
+.date-show{
+   color: #bdc3c7;
+   font-size: 10; 
+   margin-top: 5;
+}
+.favoritescount{
+    font-size: 9;
+    color: #d35400;
+}
+.cnt-articles{
+    margin-top: 20;
+    color: #7f8c8d;
+    font-weight: 500;
+    font-size: 14;
+}
+.favorite{
+    color: #2ecc71;
+}
+ 
+
+.title-articles{
+    /* margin-top:5; */
+    font-weight: 500;
+    color: #2980b9;
+    text-transform: lowercase;
+}

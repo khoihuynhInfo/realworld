@@ -41,9 +41,10 @@ export class TabsComponent implements OnInit {
         console.log(`Selected index has changed ( Old index: ${args.oldIndex} New index: ${args.newIndex} )`);
         switch (args.newIndex) {
             case 0:
+                this.store.dispatch(new GetArticles(0, true)); // YourFeed 
                 return;
             case 1:
-                this.store.dispatch(new GetArticles(0));
+                this.store.dispatch(new GetArticles(0)); // GlobalFeed
                 return;
             default:
                 return
